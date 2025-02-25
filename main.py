@@ -61,7 +61,18 @@ def create_rounded_button(canvas, x, y, width, height, radius, text, command):
     canvas.tag_bind(text_id, "<Button-1>", on_click)
 
 def on_sorting_click():
-    subprocess.Popen(["python", "cv.py"])  # Runs cv.py in a separate process
+    """Displays a loading message, waits 3 seconds, then closes the window."""
+    loading_x = screen_width // 2   # Change this to adjust horizontally
+    loading_y = screen_height - 300  # Change this to adjust vertically
+
+    loading_text = canvas.create_text(loading_x, loading_y, 
+                                      text="Loading...", font=("Arial", 24, "bold"), 
+                                      fill="white")
+
+    subprocess.Popen(["python", "cv.py"])  # Start cv.py process
+    root.after(3000, lambda: (canvas.delete(loading_text), root.destroy()))  # Remove text & close
+
+
 
 def on_counting_click():
     print("Counting Process Started!")

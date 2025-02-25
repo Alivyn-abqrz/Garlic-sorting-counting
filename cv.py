@@ -69,7 +69,8 @@ for i, tag in enumerate(tags):
 # Function to go back to main.py
 def go_back():
     cap.release()  # Release the camera
-    root.destroy()  # Close this window
+    root.after(3000, root.destroy)  # Wait 3 seconds
+    subprocess.Popen(["python", "main.py"])  # Reopen main.py
 
 # Create Back Button at the bottom-right corner
 button_width = 100
