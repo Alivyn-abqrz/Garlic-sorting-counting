@@ -17,7 +17,7 @@ canvas = tk.Canvas(root, width=screen_width, height=screen_height, highlightthic
 canvas.pack(fill="both", expand=True)
 
 # Load and set background image
-bg_image = Image.open("images/bg_camera.png").resize((screen_width, screen_height))
+bg_image = Image.open("images/Sort-count.png").resize((screen_width, screen_height))
 bg_tk_image = ImageTk.PhotoImage(bg_image)
 canvas.create_image(0, 0, anchor="nw", image=bg_tk_image)
 
@@ -28,7 +28,7 @@ canvas.images = [bg_tk_image]
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 # Camera Feed Dimensions
-cam_width, cam_height = 700, 350  # Adjust these values
+cam_width, cam_height = 900, 390  # Adjust these values
 
 # Function to update camera feed
 def update_camera():
@@ -41,7 +41,7 @@ def update_camera():
 
         # Adjust camera position (x, y)
         cam_x = (screen_width - cam_width) // 2  # Center horizontally
-        cam_y = 150  # Move it down by changing this value
+        cam_y = 60  # Move it down by changing this value
 
         # Display the camera feed
         canvas.create_image(cam_x, cam_y, anchor="nw", image=imgtk)
@@ -50,21 +50,6 @@ def update_camera():
     canvas.after(10, update_camera)
 
 update_camera()
-
-# Text Labels
-tags = ["Small", "Medium", "Large"]
-text_y = screen_height // 1.5
-box_width, box_height = 200, 50
-spacing = 100
-
-# Total width of all elements including spacing
-total_width = (3 * box_width) + (2 * spacing)
-start_x = (screen_width - total_width) // 2
-
-for i, tag in enumerate(tags):
-    x_pos = start_x + (i * (box_width + spacing))
-    canvas.create_rectangle(x_pos, text_y, x_pos + box_width, text_y + box_height, fill="#98806b", outline="black")
-    canvas.create_text(x_pos + (box_width // 2), text_y + (box_height // 2), text=tag, font=("Arial", 20, "bold"), fill="white")
 
 # Function to go back to main.py
 def go_back():

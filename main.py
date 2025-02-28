@@ -111,10 +111,10 @@ start_x = (screen_width - total_button_width) // 2  # Start position for first b
 button_y = screen_height // 2 - (button_height // 2)
 
 # Create "Sorting" button (Left)
-create_rounded_button(canvas, x=start_x, y=button_y, width=button_width, height=button_height, radius=20, text="Sorting", command=on_sorting_click)
+create_rounded_button(canvas, x=start_x, y=button_y, width=button_width, height=button_height, radius=20, text="SORT & COUNT", command=on_sorting_click)
 
 # Create "Counting" button (Right)
-create_rounded_button(canvas, x=start_x + button_width + spacing, y=button_y, width=button_width, height=button_height, radius=20, text="Counting", command=on_counting_click)
+create_rounded_button(canvas, x=start_x + button_width + spacing, y=button_y, width=button_width, height=button_height, radius=20, text="PACKAGING", command=on_counting_click)
 
 # Exit fullscreen on 'Esc'
 root.bind("<Escape>", lambda event: root.destroy())
